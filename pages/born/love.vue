@@ -1,93 +1,85 @@
 <template>
-  <div class="font-nunito">
-    <!-- Section 1: Intro -->
-    
-    <section class="flex flex-col justify-center items-center min-h-screen bg-pink-100 text-center p-6">
-      <br><br><br><br>
-      <h1 class="text-5xl font-pacifico text-pink-600 mb-4 animate-bounce">Once upon a time...</h1>
-      <!-- <p class="text-lg text-pink-700 mb-6">
-        There was a baby born on <strong>Nov 07, 1996</strong> called <strong>Hendro</strong>.
-      </p> -->
-      <p class="text-lg text-pink-700 mb-6 max-w-xl">
-        Pada suatu waktu, di hari yang indah, tanggal 7 November 1996,  
-        lahirlah seorang bayi kecil yang kelak jadi orang paling spesial dalam hidupku 💫  <br>
-        Namanya Hendro Anto Ferdinan Silitonga, biasa dipanggil 'Sayang' ehhhh (yang boleh manggil GLAS aja) .  
-        Hari itu dunia jadi lebih hangat, lebih cerah, dan jauh lebih indah, karena ada dia.
-      </p>
+  <div class="font-nunito relative min-h-screen">
+    <div class="absolute inset-0 z-0">
+      <div
+        class="w-full h-full bg-cover bg-center"
+        style="background-image: url('/img/bck.jpeg')"
+      ></div>
+      <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+    </div>
 
-      <p class="text-lg text-pink-700 mb-6 max-w-xl"> 
-        Sayangkuuuu adalah anak kedua dari tiga bersaudara.  
-        Lahir dari Ayah yang tangguh dan Bou yang luar biasa hebat.  
-        Sejak kecil, hidupnya penuh tawa, canda, dan kehangatan.  
-        Kadang usil, kadang nyebelin, tapi selalu berhasil bikin hati ngengenin hmmm 😍.
-      </p>
+    <section
+      class="relative z-10 flex flex-col justify-center items-center min-h-screen text-center p-6"
+    >
+      <br /><br /><br /><br />
+      <h1 class="text-5xl font-pacifico text-pink-300 mb-4 animate-bounced">
+        Once upon a time...
+      </h1>
 
-       <img src="/img/baby.png" alt="Teenage" class="rounded-xl shadow-md w-72 mb-6"/>
-      <p class="text-lg text-pink-700 mb-6 max-w-xl"> 
-        Sejak SMA, dia udah mulai merantau — belajar mandiri, tumbuh jadi pribadi kuat dan ceria.  
-        Humoris banget, selalu bisa bikin suasana rame, walau ya... agak pala batu dikit wkwk 😅.  
-        Tapi justru itu yang bikin dia unik dan selalu dirindukan.
-      </p>
-      <!-- <button @click="scrollToSection('section2')" 
-              class="bg-white text-pink-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-50 transition">
-        Next 🡢
-      </button> -->
-       <NuxtLink 
-  to="/born/meet" 
-  class="bg-white text-pink-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-50 transition transform hover:scale-105">
-  terussssss
-</NuxtLink>
+      <div
+        class="mt-6 w-full max-w-xs p-4 bg-white/50 backdrop-blur-md rounded-xl shadow-lg relative"
+      >
+        <button class="absolute top-2 right-2 text-red-500 font-bold"></button>
+        <div class="text-center">
+          <p class="text-gray-800">
+            Di hari yang indah, tanggal 7 November 1996, lahirlah seorang bayi
+            mungil yang bernama Hendro Anto Ferdinan Silitonga, yang biasa
+            dipanggil 'Sayang' ehhhh.... <br /><br />
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="mt-6 w-full max-w-xs p-4 bg-white/50 backdrop-blur-md rounded-xl shadow-lg relative"
+      >
+        <button class="absolute top-2 right-2 text-red-500 font-bold"></button>
+        <div class="text-center">
+          <p class="text-gray-800">
+            Sayangkuuuu adalah anak kedua dari tiga bersaudara. Lahir dari
+            Amangboru yang tangguh dan Bou yang luar biasa hebat. Sejak kecil,
+            hidupnya penuh tawa, canda, dan kehangatan. Kadang usil, kadang
+            nyebelin, tapi selalu berhasil bikin hati ngengenin hmmm 😍.
+          </p>
+        </div>
+      </div>
+      <br /><br />
+
+      <img
+        src="/img/baby.png"
+        alt="Teenage"
+        class="rounded-xl shadow-2xl w-72 mb-6 border-4 border-white/50"
+      />
+
+      <div
+        class="mt-6 w-full max-w-xs p-4 bg-white/50 backdrop-blur-md rounded-xl shadow-lg relative"
+      >
+        <button class="absolute top-2 right-2 text-red-500 font-bold"></button>
+        <div class="text-center">
+          <p class="text-gray-800">
+            Sejak SMA, dia udah mulai merantau — belajar mandiri, tumbuh jadi
+            pribadi kuat dan ceria. Humoris banget, selalu bisa bikin suasana
+            rame, walau ya... agak pala batu dikit wkwk 😅. Tapi justru itu yang
+            bikin dia unik dan selalu dirindukan.
+          </p>
+        </div>
+      </div>
+      <br /><br />
+
+      <NuxtLink
+        to="/born/meet"
+        class="bg-pink-400 text-white px-6 py-3 rounded-full shadow-lg hover:bg-pink-500 transition transform hover:scale-105"
+      >
+        terussssss
+      </NuxtLink>
     </section>
-
-    <!-- Section 2: Childhood -->
-    <!-- <section id="section2" class="flex flex-col justify-center items-center min-h-screen bg-purple-50 text-center p-6">
-      <h2 class="text-4xl font-bold text-purple-600 mb-4">Childhood Adventures</h2>
-      <p class="text-purple-700 text-lg mb-6 max-w-xl">
-        Hendro loved playing outside, chasing butterflies, and dreaming big.
-      </p>
-      <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d" 
-           alt="Childhood" class="rounded-xl shadow-md w-72 mb-6"/>
-      <button @click="scrollToSection('section3')" 
-              class="bg-white text-purple-600 px-6 py-3 rounded-full shadow-lg hover:bg-purple-50 transition">
-        Next 🡢
-      </button>
-    </section> -->
-
-    <!-- Section 3: Teenage Years -->
-    <!-- <section id="section3" class="flex flex-col justify-center items-center min-h-screen bg-yellow-50 text-center p-6">
-      <h2 class="text-4xl font-bold text-yellow-600 mb-4">Teenage Years</h2>
-      <p class="text-yellow-700 text-lg mb-6 max-w-xl">
-        Exploring new hobbies, making friends, and building dreams for the future.
-      </p>
-      <img src="/img/baby.png" 
-           alt="Teenage" class="rounded-xl shadow-md w-72 mb-6"/>
-      <button @click="scrollToSection('section4')" 
-              class="bg-white text-yellow-600 px-6 py-3 rounded-full shadow-lg hover:bg-yellow-50 transition">
-        Next 🡢
-      </button>
-    </section> -->
-
-    <!-- Section 4: Today -->
-    <!-- <section id="section4" class="flex flex-col justify-center items-center min-h-screen bg-blue-50 text-center p-6">
-      <h2 class="text-4xl font-bold text-blue-600 mb-4">Today</h2>
-      <p class="text-blue-700 text-lg mb-6 max-w-xl">
-        Now, celebrating your special day! Happy Birthday, Hendro 💖🎉
-      </p>
-      <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131" 
-           alt="Birthday" class="rounded-xl shadow-md w-72 mb-6"/>
-      <button @click="scrollToSection('section1')" 
-              class="bg-white text-blue-600 px-6 py-3 rounded-full shadow-lg hover:bg-blue-50 transition">
-        Back to Start 🔄
-      </button>
-    </section> -->
   </div>
 </template>
 
 <script setup>
 const scrollToSection = (id) => {
-  const el = document.getElementById(id)
-  el?.scrollIntoView({ behavior: 'smooth' })
-}
+  const el = document.getElementById(id);
+  el?.scrollIntoView({ behavior: "smooth" });
+};
 </script>
 
 <style>
@@ -101,8 +93,14 @@ const scrollToSection = (id) => {
   animation: float 4s infinite ease-in-out;
 }
 @keyframes float {
-  0% { transform: translateY(0) }
-  50% { transform: translateY(-20px) }
-  100% { transform: translateY(0) }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 </style>

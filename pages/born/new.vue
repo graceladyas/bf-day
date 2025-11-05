@@ -1,8 +1,15 @@
 <template>
   <div class="relative font-nunito overflow-hidden">
 
-    <!-- Falling Hearts -->
-    <div class="absolute w-full h-full pointer-events-none overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div
+        class="w-full h-full bg-cover bg-center"
+        style="background-image: url('/img/bck.jpeg')"
+      ></div>
+      <div class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+    </div>
+
+    <div class="absolute w-full h-full pointer-events-none overflow-hidden z-10">
       <div v-for="n in 30" :key="n" class="falling-heart text-pink-400 absolute" 
            :style="{
              left: `${Math.random() * 100}%`,
@@ -12,41 +19,23 @@
            }">❤️</div>
     </div>
 
-    <!-- Disclaimer Section -->
-    <section class="flex flex-col justify-center items-center min-h-screen bg-pink-50 text-center p-6 animate-fadeIn">
+    <section class="relative z-20 flex flex-col justify-center items-center min-h-screen text-center p-6 animate-fadeIn">
       <h1 class="text-4xl font-bold text-pink-600 mb-4 animate-pulse">Disclaimer!!! ⚠️</h1>
-      <p class="text-lg text-pink-700 max-w-xl mb-6">
+      <p class="text-lg text-white max-w-xl mb-6">
         Website ini dibuat dengan penuh cinta dan coding khusus sayangkuu 💕
         
       </p>
-      <small class="text-pink-700"> Ingat ya, ur GF is a Software Engineer wkwk 😝 </small><br><br>
-      <!-- <button @click="scrollToSection('section1')" 
-              class="bg-white text-pink-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-50 transition transform hover:scale-105">
-        Masuk ke Cerita 🡢
-      </button> -->
+      <small class="text-white"> Ingat ya, ur GF is a Software Engineer wkwk 😝 </small><br><br>
+      
       <NuxtLink 
-  to="/born/love" 
-  class="bg-white text-pink-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-50 transition transform hover:scale-105">
-  Aku ada cerita baby.....
-</NuxtLink>
+        to="/born/love" 
+        class="bg-white text-pink-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-50 transition transform hover:scale-105"
+      >
+        Aku ada cerita baby.....
+      </NuxtLink>
     </section>
 
-    <!-- Section 1 – Awal Cerita -->
-    <!-- <section id="section1" class="flex flex-col justify-center items-center min-h-screen bg-pink-100 text-center p-6 animate-fadeIn">
-      <h1 class="text-5xl font-pacifico text-pink-600 mb-4 animate-bounce">Once Upon a Time...</h1>
-      <p class="text-lg text-pink-700 mb-6 max-w-xl">
-        Pada suatu waktu, di hari yang indah, tanggal 7 November 1996, lahirlah seorang bayi kecil yang kelak jadi orang paling spesial dalam hidupku 💫.  
-        Namanya Hendro Anto Ferdinan Silitonga — tapi bagiku, dia adalah “Sayang” 💖.
-      </p>
-      <button @click="scrollToSection('section2')" 
-              class="bg-white text-pink-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-50 transition transform hover:scale-105">
-        Next 🡢
-      </button>
-    </section> -->
-
-    <!-- ... rest of your sections ... -->
-
-  </div>
+    </div>
 </template>
 
 <script setup>
