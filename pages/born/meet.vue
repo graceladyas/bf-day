@@ -69,7 +69,7 @@
       </div>
 
       <NuxtLink
-        to="/born/childhood"
+        to="/born/message"
         class="bg-pink-400 text-white px-6 py-3 rounded-full shadow-lg hover:bg-pink-500 transition transform hover:scale-105 mt-6 animate-bounce"
       >
         Terusssss 🎁

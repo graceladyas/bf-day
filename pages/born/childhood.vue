@@ -32,16 +32,24 @@
             <span class="text-sm text-white">Childhood</span> 
           </NuxtLink>
 
-          <button @click="currentSection='message'" 
+          <NuxtLink 
+            to="/born/message"
+            class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition"
+          >
+            <span class="text-3xl mb-1">🥳</span>
+            <span class="text-sm text-white">Message</span> 
+          </NuxtLink>
+
+          <!-- <button @click="currentSection='message'" 
                   class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition">
             <span class="text-3xl mb-1">🥳</span>
             <span class="text-sm text-white">Message</span>
-          </button>
+          </button> -->
 
           <button @click="currentSection='emojis'" 
                   class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition">
-            <span class="text-3xl mb-1">🎈</span>
-            <span class="text-sm text-white">Emojis</span>
+            <span class="text-3xl mb-1">🎁</span>
+            <span class="text-sm text-white">Gift</span>
           </button>
 
           <button @click="currentSection='music'" 
@@ -49,6 +57,37 @@
             <span class="text-3xl mb-1">🎵</span>
             <span class="text-sm text-white">Music</span>
           </button>
+
+            <NuxtLink 
+            to="/born/images"
+            class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition"
+          >
+            <span class="text-3xl mb-1">🥳</span>
+            <span class="text-sm text-white">Images</span> 
+          </NuxtLink>
+
+
+            <NuxtLink 
+            to="/born/message"
+            class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition"
+          >
+            <span class="text-3xl mb-1">🥳</span>
+            <span class="text-sm text-white">Video</span> 
+          </NuxtLink>
+          <NuxtLink 
+            to="/born/message"
+            class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition"
+          >
+            <span class="text-3xl mb-1">🥳</span>
+            <span class="text-sm text-white">Bio</span> 
+          </NuxtLink>
+           <NuxtLink 
+            to="/born/message"
+            class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition"
+          >
+            <span class="text-3xl mb-1">🥳</span>
+            <span class="text-sm text-white">cake</span> 
+          </NuxtLink>
         </div>
 
         <div v-if="currentSection" class="mt-6 w-full max-w-xs p-4 bg-white/30 rounded-xl shadow-2xl relative backdrop-blur-md text-gray-800">
@@ -64,12 +103,19 @@
             <p class="text-gray-800">Wishing you endless happiness, smiles, and love on your special day! 💖</p>
           </div>
 
-          <div v-if="currentSection==='emojis'" class="relative h-48 overflow-hidden">
+          <!-- <div v-if="currentSection==='emojis'" class="relative h-48 overflow-hidden">
             <div class="absolute top-10 left-10 text-3xl animate-bounce text-yellow-500">🎈</div>
             <div class="absolute top-16 right-16 text-4xl animate-bounce text-yellow-500">🎈</div>
             <div class="absolute bottom-20 left-16 text-3xl animate-pulse text-pink-500">🎁</div>
             <div v-for="i in 15" :key="i" class="absolute text-2xl text-yellow-500"
                  :style="{ top: Math.random()*150+'px', left: Math.random()*150+'px', transform:'rotate('+Math.random()*360+'deg)'}">✨</div>
+          </div> -->
+          <div v-if="currentSection==='emojis'" class="relative h-24 overflow-hidden">
+            <div class="absolute top-10 left-10 text-xl animate-bounce text-yellow-500">Kirim linknya sayang wkwk</div>
+            <!-- <div class="absolute top-16 right-16 text-4xl animate-bounce text-yellow-500">🎈</div> -->
+            <!-- <div class="absolute bottom-20 left-16 text-3xl animate-pulse text-pink-500">🎁</div> -->
+            <!-- <div v-for="i in 15" :key="i" class="absolute text-2xl text-yellow-500"
+                 :style="{ top: Math.random()*150+'px', left: Math.random()*150+'px', transform:'rotate('+Math.random()*360+'deg)'}">✨</div> -->
           </div>
 
           <div v-if="currentSection==='music'" class="text-center">

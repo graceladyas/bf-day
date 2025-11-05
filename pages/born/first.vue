@@ -12,10 +12,10 @@
 
     <div class="relative z-10 text-center p-6">
       <h2 class="text-4xl sm:text-5xl font-bold text-pink-400 animate-bounce">
-        🎉 Unlocked! 🎉
+         yeayyyy unlocked! 🎉
       </h2>
       <p class="mt-4 text-xl sm:text-2xl text-white">
-        Welcome to Hendro’s Birthday Story 💖
+        Welcome to Hendro’s Birthday Story ;)
       </p>
       
       <NuxtLink
