@@ -8,14 +8,25 @@
       <p class="text-pink-500 text-sm sm:text-base">Enter the secret code 💌</p>
     </div>
 
-    <!-- PIN dots -->
+    <!-- PIN dots with individual delete -->
     <div class="flex justify-center gap-3 mb-6" :class="{ 'shake': wrongPin }">
       <div
         v-for="(dot, i) in 4"
         :key="i"
-        class="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-pink-400 transition-all"
-        :class="{ 'bg-pink-500': i < input.length }"
-      ></div>
+        class="relative w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-pink-400 transition-all"
+      >
+        <div
+          v-if="i < input.length"
+          class="bg-pink-500 w-full h-full rounded-full"
+        ></div>
+        <!-- delete individual digit -->
+        <button
+          v-if="i < input.length"
+          @click="deleteAt(i)"
+          class="absolute -top-2 -right-2 text-xs sm:text-sm text-red-500"
+        >
+        </button>
+      </div>
     </div>
 
     <!-- Wrong PIN message -->
@@ -24,7 +35,7 @@
         v-if="wrongPin"
         class="text-red-400 text-sm mb-4 animate-bounce text-center"
       >
-        Oops! Lupak yak hmmmm 😝
+        Oops! Lupa Yak 😝
       </span>
     </transition>
 
@@ -50,7 +61,7 @@
         0
       </button>
 
-      <!-- Delete button -->
+      <!-- Delete last button -->
       <button
         class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-pink-100 text-pink-600 font-bold text-xl sm:text-2xl shadow-md hover:scale-105 hover:bg-pink-200 transition transform active:scale-95"
         @click="deleteOne"
@@ -86,6 +97,7 @@ const unlocked = ref(false)
 const wrongPin = ref(false)
 const correctPin = '0923'
 
+// Press number
 function press(num) {
   if (input.value.length < 4) {
     input.value += num
@@ -93,10 +105,18 @@ function press(num) {
   }
 }
 
+// Delete last
 function deleteOne() {
   if (input.value.length > 0) input.value = input.value.slice(0, -1)
 }
 
+// Delete at specific index
+function deleteAt(index) {
+  input.value =
+    input.value.slice(0, index) + input.value.slice(index + 1, input.value.length)
+}
+
+// Check PIN
 function checkPin() {
   if (input.value === correctPin) {
     setTimeout(() => (unlocked.value = true), 300)
@@ -109,6 +129,7 @@ function checkPin() {
 </script>
 
 <style scoped>
+/* Fade transition */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
@@ -118,6 +139,7 @@ function checkPin() {
   opacity: 0;
 }
 
+/* Shake animation for wrong PIN */
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
@@ -126,5 +148,11 @@ function checkPin() {
 }
 .shake {
   animation: shake 0.3s;
+}
+
+/* Prevent zoom on mobile */
+button, input {
+  font-size: 16px;       /* Prevent iOS zoom */
+  touch-action: manipulation;
 }
 </style>
