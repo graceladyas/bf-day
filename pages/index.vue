@@ -1,88 +1,130 @@
 <template>
-  <div class="relative font-nunito overflow-hidden">
-
-    <!-- Falling Hearts -->
-    <div class="absolute w-full h-full pointer-events-none overflow-hidden">
-      <div v-for="n in 30" :key="n" class="falling-heart text-pink-400 absolute" 
-           :style="{
-             left: `${Math.random() * 100}%`,
-             animationDuration: `${5 + Math.random() * 5}s`,
-             fontSize: `${12 + Math.random() * 18}px`,
-             top: `-${Math.random() * 100}px`
-           }">❤️</div>
+  <div
+    class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-pink-100 via-pink-200 to-pink-300 relative font-nunito px-4"
+  >
+    <!-- Title -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl sm:text-4xl font-bold text-pink-600 mb-2">🔒 LOCKED</h1>
+      <p class="text-pink-500 text-sm sm:text-base">Enter the secret code 💌</p>
     </div>
 
-    <!-- Disclaimer Section -->
-    <section class="flex flex-col justify-center items-center min-h-screen bg-pink-50 text-center p-6 animate-fadeIn">
-      <h1 class="text-4xl font-bold text-pink-600 mb-4 animate-pulse">Disclaimer!!! ⚠️</h1>
-      <p class="text-lg text-pink-700 max-w-xl mb-6">
-        Website ini dibuat dengan penuh cinta dan coding khusus sayangkuu 💕
-        
-      </p>
-      <small class="text-pink-700"> Ingat ya, ur GF is a Software Engineer wkwk 😝 </small><br><br>
-      <!-- <button @click="scrollToSection('section1')" 
-              class="bg-white text-pink-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-50 transition transform hover:scale-105">
-        Masuk ke Cerita 🡢
-      </button> -->
-      <NuxtLink 
-  to="/born/love" 
-  class="bg-white text-pink-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-50 transition transform hover:scale-105">
-  Aku ada cerita baby.....
-</NuxtLink>
-    </section>
+    <!-- PIN dots -->
+    <div class="flex justify-center gap-3 mb-6" :class="{ 'shake': wrongPin }">
+      <div
+        v-for="(dot, i) in 4"
+        :key="i"
+        class="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-pink-400 transition-all"
+        :class="{ 'bg-pink-500': i < input.length }"
+      ></div>
+    </div>
 
-    <!-- Section 1 – Awal Cerita -->
-    <!-- <section id="section1" class="flex flex-col justify-center items-center min-h-screen bg-pink-100 text-center p-6 animate-fadeIn">
-      <h1 class="text-5xl font-pacifico text-pink-600 mb-4 animate-bounce">Once Upon a Time...</h1>
-      <p class="text-lg text-pink-700 mb-6 max-w-xl">
-        Pada suatu waktu, di hari yang indah, tanggal 7 November 1996, lahirlah seorang bayi kecil yang kelak jadi orang paling spesial dalam hidupku 💫.  
-        Namanya Hendro Anto Ferdinan Silitonga — tapi bagiku, dia adalah “Sayang” 💖.
-      </p>
-      <button @click="scrollToSection('section2')" 
-              class="bg-white text-pink-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-50 transition transform hover:scale-105">
-        Next 🡢
+    <!-- Wrong PIN message -->
+    <transition name="fade">
+      <span
+        v-if="wrongPin"
+        class="text-red-400 text-sm mb-4 animate-bounce text-center"
+      >
+        Oops! Lupak yak hmmmm 😝
+      </span>
+    </transition>
+
+    <!-- Keypad -->
+    <div class="grid grid-cols-3 gap-4 sm:gap-6">
+      <button
+        v-for="num in 9"
+        :key="num"
+        class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white text-pink-600 font-bold text-2xl sm:text-3xl shadow-md hover:scale-105 hover:bg-pink-50 transition transform active:scale-95"
+        @click="press(num)"
+      >
+        {{ num }}
       </button>
-    </section> -->
 
-    <!-- ... rest of your sections ... -->
+      <!-- Empty space for alignment -->
+      <div></div>
 
+      <!-- 0 button -->
+      <button
+        class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white text-pink-600 font-bold text-2xl sm:text-3xl shadow-md hover:scale-105 hover:bg-pink-50 transition transform active:scale-95"
+        @click="press(0)"
+      >
+        0
+      </button>
+
+      <!-- Delete button -->
+      <button
+        class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-pink-100 text-pink-600 font-bold text-xl sm:text-2xl shadow-md hover:scale-105 hover:bg-pink-200 transition transform active:scale-95"
+        @click="deleteOne"
+      >
+        ⌫
+      </button>
+    </div>
+
+    <!-- Unlock screen -->
+    <transition name="fade">
+      <div
+        v-if="unlocked"
+        class="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-90 text-pink-600 text-center p-6"
+      >
+        <h2 class="text-3xl sm:text-4xl font-bold animate-bounce">🎉 Unlocked! 🎉</h2>
+        <p class="mt-3 text-base sm:text-lg">Welcome to Hendro’s Birthday Story 💖</p>
+        <NuxtLink
+          to="/born/new"
+          class="mt-5 bg-pink-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow hover:bg-pink-600 transition text-sm sm:text-base"
+        >
+          Masuk ke Cerita 🡢
+        </NuxtLink>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script setup>
-const scrollToSection = (id) => {
-  const el = document.getElementById(id)
-  el?.scrollIntoView({ behavior: 'smooth' })
+import { ref } from 'vue'
+
+const input = ref('')
+const unlocked = ref(false)
+const wrongPin = ref(false)
+const correctPin = '0923'
+
+function press(num) {
+  if (input.value.length < 4) {
+    input.value += num
+    if (input.value.length === 4) checkPin()
+  }
+}
+
+function deleteOne() {
+  if (input.value.length > 0) input.value = input.value.slice(0, -1)
+}
+
+function checkPin() {
+  if (input.value === correctPin) {
+    setTimeout(() => (unlocked.value = true), 300)
+  } else {
+    wrongPin.value = true
+    input.value = ''
+    setTimeout(() => (wrongPin.value = false), 1000)
+  }
 }
 </script>
 
-<style>
-/* Falling hearts animation (like snow) */
-@keyframes fall {
-  0% { transform: translateY(-50px) rotate(0deg); opacity: 0.8; }
-  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
-.falling-heart {
-  animation-name: fall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
-/* Fade in animation for sections */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px);}
-  to { opacity: 1; transform: translateY(0);}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
 }
-.animate-fadeIn {
-  animation: fadeIn 1s ease forwards;
-}
-
-/* Pulse animation for headings */
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-.animate-pulse {
-  animation: pulse 2s infinite;
+.shake {
+  animation: shake 0.3s;
 }
 </style>
