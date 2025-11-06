@@ -42,7 +42,7 @@
 
       <NuxtLink
         to="/born/love"
-        class="bg-white text-pink-600 px-6 py-3 rounded-full shadow-lg hover:bg-pink-50 transition transform hover:scale-105"
+        class="bg-white text-back font-bold px-6 py-3 rounded-full shadow-lg hover:bg-pink-50 transition transform hover:scale-105"
       >
         Aku ada cerita baby.....
       </NuxtLink>

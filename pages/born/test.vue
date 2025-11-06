@@ -151,7 +151,7 @@
           </p>
           <br />
         </div>
-        <br /><br />
+        <br />
         <!-- <NuxtLink
           to="/born/childhood"
           class="bg-white text-pink-600 px-3 py-3 rounded-full shadow-lg hover:bg-pink-50 transition transform hover:scale-105"

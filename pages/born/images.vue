@@ -100,7 +100,7 @@
       >
         Next
       </NuxtLink>
-    </div>
+    </div><br>
   </div>
 </template>
 

@@ -93,10 +93,12 @@
             </tbody>
           </table>
 
-          <div class="mt-8 text-center">
+         
+          </div>
+           <div class="mt-8 text-center">
             <NuxtLink
               to="/born/meet"
-              class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
+              class="bg-white text-black px-6 py-3 mr-4 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
             >
               Go Back
             </NuxtLink>
@@ -106,7 +108,6 @@
             >
               Next
             </NuxtLink>
-          </div>
         </div>
       </div>
     </div>

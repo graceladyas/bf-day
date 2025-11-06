@@ -33,7 +33,7 @@
     </div>
 
     <div class="relative z-20 flex flex-col justify-center items-center">
-      <h1 class="text-3xl font-pacifico text-white mb-4 animate-pulse">
+      <h1 class="text-3xl italic font-bold font-pacifico text-white mb-4 animate-pulse">
         Long story short ....
       </h1>
 
@@ -41,7 +41,7 @@
         class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
       >
         <div class="text-center">
-          <p class="text-white">
+          <p class="italic text-white">
             Langsung lompat ke tahun 2023 aja ya baby wwkw
           </p>
         </div>
@@ -51,7 +51,7 @@
         class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
       >
         <div class="text-center">
-          <p class="text-white">
+          <p class="italic text-white">
             The first time I saw him, I knew Hendro was here on this earth hehe
           </p>
         </div>
@@ -67,7 +67,7 @@
         class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
       >
         <div class="text-center">
-          <p class="text-white">
+          <p class="italic text-white">
             "paribanmu dia katanya ges, mamanya manurung" - YP wkwk
           </p>
         </div>

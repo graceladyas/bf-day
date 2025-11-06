@@ -13,7 +13,7 @@
     >
       <br /><br /><br /><br />
       <h4
-        class="text-center text-3xl font-pacifico text-white mb-4 animate-bounced"
+        class="text-center font-bold italic text-3xl font-pacifico text-white mb-4 animate-bounced"
       >
         Once upon a time...
       </h4>
@@ -101,24 +101,16 @@
         </div>
       </div>
       <br /><br />
-
-      <!-- <NuxtLink
-        to="/born/meet"
-        class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-pink-500 transition transform hover:scale-105"
-      >
-        Next
-      </NuxtLink> -->
-
       <div class="mt-8 flex justify-center space-x-4">
         <NuxtLink
           to="/born/new"
-          class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
+          class="bg-white font-bold text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
         >
           Go Back
         </NuxtLink>
         <NuxtLink
           to="/born/meet"
-          class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
+          class="bg-white font-bold text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
         >
           Next
         </NuxtLink>

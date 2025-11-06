@@ -60,7 +60,7 @@
         </NuxtLink>
 
         <NuxtLink
-          to="/born/message"
+          to="/born/images"
           class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition"
         >
           <span class="text-3xl mb-1">🥳</span>
