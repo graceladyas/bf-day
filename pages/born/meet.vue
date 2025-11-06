@@ -23,17 +23,22 @@
           top: `-${Math.random() * 150}px`,
         }"
       >
-        ✨
+        <img
+          src="/img/a3.jpeg"
+          alt="Teenage"
+          style="width: 30px; height: 30px"
+          class="rounded-xl shadow-2xl mb-6 border-4 border-white/50"
+        />
       </div>
     </div>
 
     <div class="relative z-20 flex flex-col justify-center items-center">
-      <h1 class="text-5xl font-pacifico text-white mb-4 animate-pulse">
+      <h1 class="text-3xl font-pacifico text-white mb-4 animate-pulse">
         Long story short ....
       </h1>
 
       <div
-        class="mt-6 w-full max-w-xs p-4 bg-white/50 backdrop-blur-md rounded-xl shadow-lg relative"
+        class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
       >
         <div class="text-center">
           <p class="text-white">
@@ -43,7 +48,7 @@
       </div>
 
       <div
-        class="mt-6 w-full max-w-xs p-4 bg-white/50 backdrop-blur-md rounded-xl shadow-lg relative"
+        class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
       >
         <div class="text-center">
           <p class="text-white">
@@ -59,7 +64,7 @@
       />
 
       <div
-        class="mt-6 w-full max-w-xs p-4 bg-white/50 backdrop-blur-md rounded-xl shadow-lg relative"
+        class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
       >
         <div class="text-center">
           <p class="text-white">
@@ -68,12 +73,27 @@
         </div>
       </div>
 
-      <NuxtLink
-        to="/born/message"
-        class="bg-pink-400 text-white px-6 py-3 rounded-full shadow-lg hover:bg-pink-500 transition transform hover:scale-105 mt-6 animate-bounce"
+      <!-- <NuxtLink
+        to="/born/test"
+        class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-pink-500 transition transform hover:scale-105 mt-6"
       >
-        Terusssss 🎁
-      </NuxtLink>
+        Next
+      </NuxtLink> -->
+
+      <div class="mt-8 flex justify-center space-x-4">
+        <NuxtLink
+          to="/born/love"
+          class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
+        >
+          Go Back
+        </NuxtLink>
+        <NuxtLink
+          to="/born/del"
+          class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
+        >
+          Next
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
@@ -85,23 +105,39 @@
   animation-iteration-count: infinite;
 }
 @keyframes fall {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(600px); opacity: 0; }
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(600px);
+    opacity: 0;
+  }
 }
 
 .animate-pulse {
   animation: pulse 2s infinite;
 }
 @keyframes pulse {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .animate-bounce {
   animation: bounce 2s infinite;
 }
 @keyframes bounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 </style>

@@ -44,7 +44,6 @@
         </div>
       </div>
 
-
       <div
         class="mt-6 w-full max-w-xs p-4 bg-white/50 backdrop-blur-md rounded-xl shadow-lg relative"
       >
@@ -73,24 +72,6 @@
             panjang, dilimpahkan rezeki sederas cintaku padamu, dikelilingi
             orang-orang baik, dijauhkan dari hal buruk, dikuatkan dalam setiap
             langkah, dan tentu semakin mencintai aku jugau ;)
-
-            <br /><br />
-          </p>
-        </div>
-      </div>
-
-      <div
-        class="mt-6 w-full max-w-xs p-4 bg-white/50 backdrop-blur-md rounded-xl shadow-lg relative"
-      >
-        <button class="absolute top-2 right-2 text-red-500 font-bold"></button>
-        <div class="text-center">
-          <p class="text-gray-800">
-            Mungkin ini fase ‘proses’ yang harus kita jalani, menunggu,
-            berharap, mempercayakan segalanya pada waktu Tuhan. tp kadang sedih
-            denger kamu bilang udah bosen disana, udah stuck :( sabar ya
-            hasianku. Percaya aja di balik setiap penantian, selalu ada doa yang
-            terkabul, jangan lupa doa yg kencengggg ya biar Tuhan cepat kirim
-            kabar baik buat kita berdua
 
             <br /><br />
           </p>
@@ -256,11 +237,8 @@
         <button class="absolute top-2 right-2 text-red-500 font-bold"></button>
         <div class="text-center">
           <p class="text-gray-800">
-            sekali lagi selamat ulangtahun ya hasianku,
-            bahagia selalu ya,my
-            amen for all ur wishes… 
-            I laffyuuuu so muchhhh, 
-            God Bless You..
+            sekali lagi selamat ulangtahun ya hasianku, bahagia selalu ya,my
+            amen for all ur wishes… I laffyuuuu so muchhhh, God Bless You..
 
             <br /><br />
           </p>

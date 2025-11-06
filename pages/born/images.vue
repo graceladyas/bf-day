@@ -80,12 +80,27 @@
       </div>
     </transition>
 
-    <NuxtLink
-        to="/born/childhood"
-        class="bg-pink-400 text-white px-6 py-3 rounded-full shadow-lg hover:bg-pink-500 transition transform hover:scale-105 mt-6"
+    <!-- <NuxtLink
+      to="/born/childhood"
+      class="bg-pink-400 text-white px-6 py-3 rounded-full shadow-lg hover:bg-pink-500 transition transform hover:scale-105 mt-6"
+    >
+      Back
+    </NuxtLink> -->
+
+    <div class="mt-8 flex justify-center space-x-4">
+      <NuxtLink
+        to="/born/test"
+        class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
       >
-        Back 
+        Go Back
       </NuxtLink>
+      <NuxtLink
+        to="/born/bio"
+        class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
+      >
+        Next
+      </NuxtLink>
+    </div>
   </div>
 </template>
 
@@ -93,14 +108,19 @@
 import { ref } from "vue";
 
 const images = ref([
-  "/img/hen.jpeg",
-  "/img/hen.jpeg",
-  "/img/hen.jpeg",
-  "/img/hen.jpeg",
-  "/img/hen.jpeg",
-  "/img/hen.jpeg",
-  "/img/hen.jpeg",
-  "/img/hen.jpeg",
+  "/img/a1.jpeg",
+  "/img/a2.jpeg",
+  "/img/a3.jpeg",
+  "/img/a4.jpeg",
+  // "/img/a5.jpeg",
+  // "/img/a6.jpeg",
+  "/img/a7.jpeg",
+  "/img/a8.jpeg",
+  "/img/a9.jpeg",
+  "/img/a10.jpeg",
+  "/img/a11.jpeg",
+  "/img/a12.jpeg",
+  "/img/a13.jpeg",
 ]);
 
 const selectedImage = ref(null);

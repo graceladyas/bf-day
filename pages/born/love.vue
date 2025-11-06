@@ -9,40 +9,52 @@
     </div>
 
     <section
-      class="relative z-10 flex flex-col justify-center items-center min-h-screen text-center p-6"
+      class="relative z-10 flex flex-col justify-center items-center min-h-screen p-6"
     >
       <br /><br /><br /><br />
-      <h1 class="text-5xl font-pacifico text-pink-300 mb-4 animate-bounced">
+      <h4
+        class="text-center text-3xl font-pacifico text-white mb-4 animate-bounced"
+      >
         Once upon a time...
-      </h1>
+      </h4>
 
       <div
-        class="mt-6 w-full max-w-xs p-4 bg-white/50 backdrop-blur-md rounded-xl shadow-lg relative"
+        class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
       >
-        <button class="absolute top-2 right-2 text-red-500 font-bold"></button>
-        <div class="text-center">
-          <p class="text-gray-800">
-            Di hari yang indah, tanggal 7 November 1996, lahirlah seorang bayi
-            mungil yang bernama Hendro Anto Ferdinan Silitonga, yang biasa
-            dipanggil 'Sayang' ehhhh.... <br /><br />
+        <div class="text-base italic leading-relaxed">
+          <p class="text-white">
+            Tepat tanggal 07 November 1996, lahirlah seorang bayi kicik mungil
+            yg kelak akan mencuri hatikuu yuhuu. namanya Hendro Anto Ferdinan
+            Silitonga, tapi aku lebih suka memanggilnya “Sayangku, cintakuu”
+            xixixi
           </p>
         </div>
       </div>
 
       <div
-        class="mt-6 w-full max-w-xs p-4 bg-white/50 backdrop-blur-md rounded-xl shadow-lg relative"
+        class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
       >
-        <button class="absolute top-2 right-2 text-red-500 font-bold"></button>
-        <div class="text-center">
-          <p class="text-gray-800">
-            Sayangkuuuu adalah anak kedua dari tiga bersaudara. Lahir dari
-            Amangboru yang tangguh dan Bou yang luar biasa hebat. Sejak kecil,
-            hidupnya penuh tawa, canda, dan kehangatan. Kadang usil, kadang
-            nyebelin, tapi selalu berhasil bikin hati ngengenin hmmm 😍.
+        <div class="text-base italic leading-relaxed">
+          <p class="text-white">
+            Sayangku tercinta adalah anak kedua dari tiga bersaudara. Lahir dari
+            Amangboru yang tangguh dan Bou yang luar biasa penuh kasih hmmm 😍.
           </p>
         </div>
       </div>
-      <br /><br />
+      <br />
+
+      <div
+        class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
+      >
+        <div class="text-base italic leading-relaxed">
+          <p class="text-white">
+            Sejak kecil, hidupnya selalu dipenuhi canda, dan hangatnya kasih
+            sayang. Kadang usil, kadang nyebelin, kadang tantrum, tapi tetep aja
+            buat aku kgn.
+          </p>
+        </div>
+      </div>
+      <br />
 
       <img
         src="/img/baby.png"
@@ -51,26 +63,66 @@
       />
 
       <div
-        class="mt-6 w-full max-w-xs p-4 bg-white/50 backdrop-blur-md rounded-xl shadow-lg relative"
+        class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
       >
-        <button class="absolute top-2 right-2 text-red-500 font-bold"></button>
-        <div class="text-center">
-          <p class="text-gray-800">
-            Sejak SMA, dia udah mulai merantau — belajar mandiri, tumbuh jadi
-            pribadi kuat dan ceria. Humoris banget, selalu bisa bikin suasana
-            rame, walau ya... agak pala batu dikit wkwk 😅. Tapi justru itu yang
-            bikin dia unik dan selalu dirindukan.
+        <div class="text-base italic leading-relaxed">
+          <p class="text-white">
+            Sejak SMA, Sayangku mulai merantau, belajar hidup mandiri dan tumbuh
+            jadi sosok yang kuat, ceria, dan penuh semangat. Dia selalu dgn
+            tawanya ke mana pun pergi. Walau terkadang kepalanya keras, sekeras
+            batu yg ada di semesta tapi hatinya lembut, selembut salju wqwq.
+          </p>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
+      >
+        <div class="text-base italic leading-relaxed">
+          <p class="text-white">
+            Kadang kalau nyanyi kodamnya suka keluar, ntah dari mana suara
+            “OooOOOooMaaaaGoddDdd” (bernyanyi dengan kodam hendro). Pen cubit
+            rasanya.
+          </p>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="mt-6 w-full max-w-xs p-4 bg-white/20 backdrop-blur-md rounded-xl shadow-lg relative"
+      >
+        <div class="text-base italic leading-relaxed">
+          <p class="text-white">
+            Namun di balik semua itu, dia punya hati yang tulus, hangat, pekerja
+            keras, yang bikin aku yakin, dunia ini terasa lebih indah karena ada
+            dia muachhhh
           </p>
         </div>
       </div>
       <br /><br />
 
-      <NuxtLink
+      <!-- <NuxtLink
         to="/born/meet"
-        class="bg-pink-400 text-white px-6 py-3 rounded-full shadow-lg hover:bg-pink-500 transition transform hover:scale-105"
+        class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-pink-500 transition transform hover:scale-105"
       >
-        terussssss
-      </NuxtLink>
+        Next
+      </NuxtLink> -->
+
+      <div class="mt-8 flex justify-center space-x-4">
+        <NuxtLink
+          to="/born/new"
+          class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
+        >
+          Go Back
+        </NuxtLink>
+        <NuxtLink
+          to="/born/meet"
+          class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
+        >
+          Next
+        </NuxtLink>
+      </div>
     </section>
   </div>
 </template>
