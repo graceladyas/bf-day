@@ -12,7 +12,7 @@
 
     <div class="relative z-10 text-center p-6">
       <h2 class="text-4xl sm:text-5xl font-bold text-pink-400 animate-bounce">
-         yeayyyy unlocked! 🎉
+         Yeayyyy unlocked! 🎉
       </h2>
       <p class="mt-4 text-xl sm:text-2xl text-white">
         Welcome to Hendro’s Birthday Story ;)
@@ -20,7 +20,7 @@
       
       <NuxtLink
         to="/born/childhood" 
-        class="mt-8 inline-block bg-pink-500 text-white px-8 py-4 rounded-full shadow-lg hover:bg-pink-600 transition text-lg sm:text-xl transform hover:scale-105"
+        class="mt-8 inline-block bg-white text-black font-bold px-6 py-3 rounded-full shadow-lg hover:bg-pink-600 transition text-sm sm:text-sm transform hover:scale-105"
       >
         Masuk ke Cerita 
       </NuxtLink>

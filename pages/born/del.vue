@@ -1,5 +1,12 @@
 <template>
   <div class="min-h-screen relative flex items-center justify-center p-4">
+    <!-- 🌟 AUDIO ELEMENT FOR MUSIC 🌟 -->
+    <audio ref="musicRef" loop style="display: none;">
+      <!-- Using your specified local file -->
+      <source src="/music/goodness.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    
     <div class="absolute inset-0 z-0">
       <div
         class="w-full h-full bg-cover bg-center"
@@ -17,15 +24,38 @@
       "
     >
       <div class="relative h-full w-full p-4 flex flex-col font-sans">
-        <div
-          class="relative flex-grow pr-2 scroll-touch flex flex-col justify-center items-center overflow-y-auto"
-        >
-          <h2 class="text-3xl font-extrabold text-white text-center mb-4">
-            November 2025 Calendar
+        
+        <!-- HEADER WITH MUSIC CONTROL -->
+        <div class="flex justify-between items-center mb-4 relative">
+          <h2 class="text-3xl font-extrabold text-white text-center">
+            The Dayyyyy!
           </h2>
-          <table class="calendar-table text-white">
+          
+          <!-- Music Control Button -->
+          <button
+            @click="toggleMusic"
+            class="absolute right-0 bg-white/10 text-white p-2 rounded-full shadow-lg hover:bg-white/30 backdrop-blur-md transition transform hover:scale-105"
+            aria-label="Play/Pause Music"
+          >
+            <!-- Play/Pause Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+              <!-- Pause Icon (if playing) -->
+              <path v-if="isMusicPlaying" d="M11 5V19M18 5V19"/>
+              <!-- Play Icon (if paused) -->
+              <polygon v-else points="5 3 19 12 5 21 5 3"/>
+            </svg>
+          </button>
+        </div>
+
+
+        <div
+          class="relative flex-grow pr-2 scroll-touch 
+                 flex flex-col justify-center items-center 
+                 overflow-y-auto"
+        >
+          <table class="calendar-table">
             <thead>
-              <tr class="text-xs">
+              <tr class="text-xs text-white">
                 <th>SUN</th>
                 <th>MON</th>
                 <th>TUE</th>
@@ -35,7 +65,7 @@
                 <th>SAT</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="text-white">
               <tr>
                 <td class="empty"></td>
                 <td class="empty"></td>
@@ -93,12 +123,11 @@
             </tbody>
           </table>
 
-         
-          </div>
-           <div class="mt-8 text-center">
+          <!-- 🌟 UPDATED BUTTON CONTAINER: Using mr-4 on the first link 🌟 -->
+          <div class="mt-8 text-center">
             <NuxtLink
               to="/born/meet"
-              class="bg-white text-black px-6 py-3 mr-4 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
+              class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold mr-4"
             >
               Go Back
             </NuxtLink>
@@ -108,13 +137,81 @@
             >
               Next
             </NuxtLink>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
+<script>
+import { ref, onMounted } from "vue";
+
+export default {
+    setup() {
+        const isMusicPlaying = ref(false);
+        const musicRef = ref(null); 
+        
+        // Waktu mulai: 25 detik
+        const START_TIME_SECONDS = 25; 
+
+        // --- Music Functions ---
+        const startMusic = () => {
+            const audio = musicRef.value;
+            if (!audio) {
+                 console.error("Audio element not found.");
+                 return;
+            }
+            
+            // Memastikan audio metadata dimuat sebelum mengatur currentTime
+            audio.onloadedmetadata = () => {
+                 audio.currentTime = START_TIME_SECONDS;
+                 audio.volume = 0.5;
+
+                 audio.play().then(() => {
+                    isMusicPlaying.value = true;
+                 }).catch(error => {
+                    console.warn("Autoplay blocked. Tap music button to start.");
+                    isMusicPlaying.value = false;
+                 });
+            };
+            
+            audio.load(); // Memaksa pemuatan
+        };
+
+        const toggleMusic = () => {
+            const audio = musicRef.value;
+            if (!audio) return;
+
+            if (isMusicPlaying.value) {
+                audio.pause();
+                isMusicPlaying.value = false;
+            } else {
+                // Saat diputar secara manual, pastikan posisi benar jika belum mulai
+                if (audio.currentTime === 0 || audio.paused) {
+                     audio.currentTime = START_TIME_SECONDS;
+                }
+                
+                audio.play().then(() => {
+                    isMusicPlaying.value = true;
+                }).catch(() => {
+                    console.error("Failed to play audio on interaction.");
+                });
+            }
+        };
+
+        onMounted(() => {
+            // Beri waktu tunggu singkat agar elemen audio siap
+            setTimeout(startMusic, 100); 
+        });
+
+        return {
+            isMusicPlaying,
+            musicRef,
+            toggleMusic,
+        };
+    },
+};
 </script>
 
 <style scoped>
@@ -132,10 +229,14 @@
 
 /* --- Calendar Styling --- */
 .calendar-table {
-  width: 100%;
+  /* Removed 'width: 100%;' */
+  max-width: 300px; /* Ensures the table is a readable size */
   border-collapse: collapse;
   table-layout: fixed; /* Ensures all columns are the same width */
   margin-top: 15px;
+  /* Added auto margins for horizontal centering if max-width is set */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .calendar-table th {

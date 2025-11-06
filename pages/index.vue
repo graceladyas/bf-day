@@ -14,7 +14,8 @@
         
         <div class="text-center mb-8">
           <h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">🔒 LOCKED</h1>
-          <p class="text-white/80 text-sm sm:text-base">Enter the secret code 💌</p>
+          <p class="text-white/80 text-sm sm:text-base">Enter the secret code</p>
+          <p class="text-white/80 italic text-xs xs:text-base">Cluenya tanggal dan tahunnya kita</p>
         </div>
 
         <div class="flex justify-center gap-3 mb-6" :class="{ 'shake': wrongPin }">

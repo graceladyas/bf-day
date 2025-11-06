@@ -2,6 +2,13 @@
   <div
     class="min-h-screen flex flex-col items-center justify-start px-4 pt-8 font-nunito relative"
   >
+    <!-- 🌟 AUDIO ELEMENT FOR ONLINE MUSIC 🌟 -->
+    <audio ref="musicRef" loop style="display: none;">
+      <!-- SOURCE UPDATED TO YOUR LOCAL FILE -->
+      <source src="/music/hbd.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
     <div class="absolute inset-0 z-0">
       <div
         class="w-full h-full bg-cover bg-center"
@@ -43,43 +50,45 @@
           <span class="text-sm text-white">Gift</span>
         </button>
 
-        <!-- <button
-          @click="currentSection = 'music'"
+        <!-- 🌟 MUSIC BUTTON IS NOW UNCOMMENTED AND ACTIVE 🌟 -->
+        <button
+          @click="toggleMusic"
           class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition"
         >
           <span class="text-3xl mb-1">🎵</span>
-          <span class="text-sm text-white">Music</span>
-        </button> -->
+          <span class="text-sm text-white">{{ isMusicPlaying ? 'Stop Music' : 'Play Music' }}</span>
+        </button>
+        <!-- 🌟 END MUSIC BUTTON 🌟 -->
 
         <NuxtLink
           to="/born/images"
           class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition"
         >
-          <span class="text-3xl mb-1">🥳</span>
+          <span class="text-3xl mb-1">🖼️</span>
           <span class="text-sm text-white">Images</span>
         </NuxtLink>
 
         <NuxtLink
-          to="/born/images"
+          to="/born/video"
           class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition"
         >
-          <span class="text-3xl mb-1">🥳</span>
+          <span class="text-3xl mb-1">🎬</span>
           <span class="text-sm text-white">Video</span>
         </NuxtLink>
         <NuxtLink
           to="/born/bio"
           class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition"
         >
-          <span class="text-3xl mb-1">🥳</span>
+          <span class="text-3xl mb-1">👤</span>
           <span class="text-sm text-white">About me</span>
         </NuxtLink>
-        <!-- <NuxtLink
-          to="/born/message"
+        <NuxtLink
+          to="/born/del"
           class="flex flex-col items-center justify-center p-4 bg-white/40 hover:bg-white/50 rounded-2xl shadow-xl text-blue-800 backdrop-blur-md transition"
         >
-          <span class="text-3xl mb-1">🥳</span>
-          <span class="text-sm text-white">cake</span>
-        </NuxtLink> -->
+          <span class="text-3xl mb-1">🗓️</span>
+          <span class="text-sm text-white">Calendar</span>
+        </NuxtLink>
       </div>
 
       <div
@@ -121,44 +130,55 @@
             Kirim linknya sayang wkwk
           </div>
         </div>
-
-        <!-- <div v-if="currentSection === 'music'" class="text-center">
-          <h3 class="text-xl font-semibold text-blue-700 mb-2">
-            🎵 Background Music
-          </h3>
-          <audio ref="music" loop>
-            <source
-              src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-              type="audio/mpeg"
-            />
-          </audio>
-          <button
-            @click="toggleMusic"
-            class="mt-2 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-full shadow-lg"
-          >
-            {{ isMusicPlaying ? "Pause 🔇" : "Play 🔊" }}
-          </button>
-        </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-
 const currentSection = ref("");
-const music = ref(null);
 const isMusicPlaying = ref(false);
+const musicRef = ref(null); // Reference to the <audio> element
 
+// Function to handle autoplay attempt
+function startMusic() {
+  const audio = musicRef.value;
+  if (!audio) return;
+  
+  // Set volume lower for background music
+  audio.volume = 0.5;
+
+  audio.play().then(() => {
+    isMusicPlaying.value = true;
+  }).catch(error => {
+    // Autoplay was prevented. User must interact.
+    console.warn("Autoplay blocked by browser. Please tap the button to start music.");
+    isMusicPlaying.value = false;
+  });
+}
+
+onMounted(() => {
+    // Wait a brief moment for Vue to mount the ref to the DOM element
+    setTimeout(() => {
+        startMusic();
+    }, 100); 
+});
+
+// Function to handle the button click
 function toggleMusic() {
-  if (!music.value) music.value = document.querySelector("audio");
+  const audio = musicRef.value;
+  if (!audio) return;
+
   if (isMusicPlaying.value) {
-    music.value.pause();
+    audio.pause();
     isMusicPlaying.value = false;
   } else {
-    music.value.play();
-    isMusicPlaying.value = true;
+    // Play will trigger browser's audio context resume if needed
+    audio.play().then(() => {
+      isMusicPlaying.value = true;
+    }).catch(() => {
+        console.error("Failed to play audio on interaction.");
+    });
   }
 }
 </script>

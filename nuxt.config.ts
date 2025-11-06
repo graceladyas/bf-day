@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   },
   app:{
     head: {
-      title: 'bf',
+      title: 'HAFS BIRTHDAY',
       htmlAttrs: {
         lang: 'en'
       },

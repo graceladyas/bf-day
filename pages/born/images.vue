@@ -2,6 +2,13 @@
   <div
     class="min-h-screen flex flex-col items-center justify-start px-4 pt-8 font-nunito relative"
   >
+    <!-- 🌟 AUDIO ELEMENT FOR MUSIC 🌟 -->
+    <audio ref="musicRef" loop style="display: none;">
+      <!-- Using your specified local file -->
+      <source src="/music/sal.mp3" type="audio/mpeg" />
+      No music ges
+    </audio>
+
     <!-- Background -->
     <div class="absolute inset-0 z-0">
       <div
@@ -13,9 +20,27 @@
 
     <!-- Page Content -->
     <div class="relative z-10 w-full max-w-6xl">
-      <h1 class="text-3xl font-bold text-center mb-8 text-white">
-        Our Memories 🎉
-      </h1>
+      
+      <!-- HEADER WITH MUSIC CONTROL -->
+      <div class="flex justify-center items-center mb-8 relative">
+        <h1 class="text-3xl font-bold text-white text-center">
+          Our Memories 🎉
+        </h1>
+        
+        <!-- Music Control Button (Absolute right to prevent shifting the title) -->
+        <button
+          @click="toggleMusic"
+          class="absolute right-0 bg-white/10 text-white p-2 rounded-full shadow-lg hover:bg-white/30 backdrop-blur-md transition transform hover:scale-105"
+        >
+          <!-- Play/Pause Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+            <!-- Pause Icon (if playing) -->
+            <path v-if="isMusicPlaying" d="M11 5V19M18 5V19"/>
+            <!-- Play Icon (if paused) -->
+            <polygon v-else points="5 3 19 12 5 21 5 3"/>
+          </svg>
+        </button>
+      </div>
 
       <!-- Gallery Grid -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -34,7 +59,7 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal (Remains the same) -->
     <transition name="fade">
       <div
         v-if="selectedImage !== null"
@@ -80,13 +105,6 @@
       </div>
     </transition>
 
-    <!-- <NuxtLink
-      to="/born/childhood"
-      class="bg-pink-400 text-white px-6 py-3 rounded-full shadow-lg hover:bg-pink-500 transition transform hover:scale-105 mt-6"
-    >
-      Back
-    </NuxtLink> -->
-
     <div class="mt-8 flex justify-center space-x-4">
       <NuxtLink
         to="/born/test"
@@ -95,7 +113,7 @@
         Go Back
       </NuxtLink>
       <NuxtLink
-        to="/born/bio"
+        to="/born/video"
         class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-white transition transform hover:scale-105 font-bold"
       >
         Next
@@ -105,15 +123,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const images = ref([
   "/img/a1.jpeg",
   "/img/a2.jpeg",
   "/img/a3.jpeg",
   "/img/a4.jpeg",
-  // "/img/a5.jpeg",
-  // "/img/a6.jpeg",
   "/img/a7.jpeg",
   "/img/a8.jpeg",
   "/img/a9.jpeg",
@@ -121,9 +137,12 @@ const images = ref([
   "/img/a11.jpeg",
   "/img/a12.jpeg",
   "/img/a13.jpeg",
+  "/img/couple.jpeg",
 ]);
 
 const selectedImage = ref(null);
+const isMusicPlaying = ref(false);
+const musicRef = ref(null); // Reference to the <audio> element
 
 // Open modal
 function openModal(index) {
@@ -150,6 +169,48 @@ function touchEnd(e) {
   if (diff < -50) nextImage(); // swipe left → next image
   if (diff > 50) prevImage(); // swipe right → previous image
 }
+
+// --- Music Functions ---
+function startMusic() {
+  const audio = musicRef.value;
+  if (!audio) return;
+  
+  // Set volume lower for background music
+  audio.volume = 0.5;
+
+  audio.play().then(() => {
+    isMusicPlaying.value = true;
+  }).catch(error => {
+    // Autoplay was prevented.
+    console.warn("Autoplay blocked by browser. Please tap the button to start music.");
+    isMusicPlaying.value = false;
+  });
+}
+
+function toggleMusic() {
+  const audio = musicRef.value;
+  if (!audio) return;
+
+  if (isMusicPlaying.value) {
+    audio.pause();
+    isMusicPlaying.value = false;
+  } else {
+    // Play will trigger browser's audio context resume if needed
+    audio.play().then(() => {
+      isMusicPlaying.value = true;
+    }).catch(() => {
+        console.error("Failed to play audio on interaction.");
+    });
+  }
+}
+
+onMounted(() => {
+    // Attempt to start music after component mounts
+    setTimeout(() => {
+        startMusic();
+    }, 100); 
+});
+
 </script>
 
 <style scoped>
