@@ -77,7 +77,8 @@ import { useRouter } from 'vue-router' // or 'nuxt/app' if using Nuxt 3
 
 const input = ref('')
 const wrongPin = ref(false)
-const correctPin = '0923'
+// const correctPin = '0923'
+const correctPin = '8998'
 const router = useRouter() // 2. Initialize router
 
 // Press number
